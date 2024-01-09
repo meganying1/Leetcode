@@ -11,11 +11,13 @@
 class Solution:
     def maxScore(self, cardPoints: List[int], k: int) -> int:
         length = len(cardPoints)
-        for i in range(1, length): cardPoints[i] += cardPoints[i-1]
         start, end = 0, length-k-1
-        minSum = cardPoints[end]
+        currSum = sum(cardPoints[:end])
+        total, minSum = currSum, currSum
         while end < length-1:
             start += 1
             end += 1
-            minSum = min(minSum, cardPoints[end]-cardPoints[start-1])
-        return cardPoints[-1] - minSum
+            total += cardPoints[end]
+            currSum += cardPoints[end] - cardPoints[start-1]
+            minSum = min(minSum, currSum)
+        return total - minSum
