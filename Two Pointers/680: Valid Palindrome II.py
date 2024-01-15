@@ -2,6 +2,9 @@
 # difficulty: easy
 # topics: two pointers, string, greedy
 
+# problem:
+# Given a string s, return true if the s can be palindrome after deleting at most one character from it.
+
 class Solution:
     def isPalindrome(self, s):
         return s == s[::-1]
