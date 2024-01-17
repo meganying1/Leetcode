@@ -8,6 +8,26 @@
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
+        ans = set()
+        length = len(nums)
+        nums.sort()
+        for i in range(length):
+            if i != 0 and nums[i] == nums[i-1]: continue
+            neededSum = -nums[i]
+            j, k = i+1, length-1
+            while j < k:
+                currSum = nums[j] + nums[k]
+                if currSum == neededSum:
+                    ans.add((nums[i], nums[j], nums[k]))
+                    j += 1
+                    k -= 1
+                elif currSum > neededSum: k -= 1
+                else: j += 1
+        return list(ans)
+
+"""
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
         ans = []
         length, checkedI = len(nums), set()
         nums.sort()
@@ -30,3 +50,5 @@ class Solution:
                 elif currSum > neededSum: k -= 1
                 else: j += 1
         return ans
+"""
+# using checkedI takes n memory, can just compare number to previous number (since everything is sorted)
