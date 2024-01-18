@@ -9,6 +9,26 @@ class Solution:
     def validPalindrome(self, s: str) -> bool:
         start, end = 0, len(s)-1
 
+        def isPalindrome(start, end):
+            while start < end:
+                if s[start] != s[end]: return False
+                start += 1
+                end -= 1
+            return True
+
+        while start < end:
+            if s[start] == s[end]:
+                start += 1
+                end -= 1
+                continue
+            return isPalindrome(start+1, end) or isPalindrome(start, end-1)
+        return True
+
+"""
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        start, end = 0, len(s)-1
+
         def isPalindrome(s, start, end):
             while start < end:
                 if s[start] != s[end]: return False
@@ -23,6 +43,8 @@ class Solution:
                 continue
             return isPalindrome(s, start+1, end) or isPalindrome(s, start, end-1)
         return True
+"""
+# still linear memory usage because it recreates a local variable s in memory
 
 """
 class Solution:
