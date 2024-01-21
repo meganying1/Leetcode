@@ -9,6 +9,26 @@ class Solution:
     def trap(self, height: List[int]) -> int:
         length = len(height)
         ans = 0
+        leftMax, rightMax = 0, 0
+        left, right = 0, length-1
+        while left <= right:
+            if leftMax < rightMax:
+                if height[left] < leftMax: ans += leftMax - height[left]
+                leftMax = max(leftMax, height[left])
+                left += 1
+            else:
+                if height[right] < rightMax: ans += rightMax - height[right]
+                rightMax = max(rightMax, height[right])
+                right -= 1
+        return ans
+# leftMax and rightMax are monotonic: leftMax only increases as you move right and rightMax only increases as you move left
+#     -> can use two pointers to keep track of values instead of arrays
+
+"""
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        length = len(height)
+        ans = 0
         left, right = [0] * length, [0] * length
         leftMax, rightMax = 0, 0
         for i in range(1, length):
@@ -19,6 +39,6 @@ class Solution:
             if val < height[i]: continue
             ans += val - height[i]
         return ans
-
+"""
 # time complexity: O(n)
 # space complexity: O(n)
