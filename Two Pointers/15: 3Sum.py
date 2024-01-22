@@ -25,8 +25,10 @@ class Solution:
                 else: j += 1
         return ans
 # time complexity: O(n^2)
-# space complexity:L O(sort)
+# space complexity: O(sort)
 #     sort() in python is O(n) space complexity, but don't assume and say that space complexity depends on the sort function
+
+# another way to think about space complexity: there are n possible pairs of remaining two numbers we can pick for each first number we pick, and there are n first numbers we can pick
 
 """
 class Solution:
