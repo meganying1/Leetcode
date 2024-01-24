@@ -18,9 +18,7 @@ class Solution:
         valMap = {'A':1, 'C':2, 'G':3, 'T':4}
         ans = []
         hashVal = 0
-        for i in range(10):
-            hashVal *= 10
-            hashVal += valMap[s[i]]
+        for i in range(10): hashVal = hashVal * 10 + valMap[s[i]]
         counts[hashVal] += 1
 
         while end < length:
