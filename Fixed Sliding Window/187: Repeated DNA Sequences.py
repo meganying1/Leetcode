@@ -27,6 +27,9 @@ class Solution:
             counts[hashVal] += 1
             if counts[hashVal] == 2: ans.append(s[end-10:end])
         return ans
+# time complexity: O(n+10)
+# space complexity: O(n+10)
+
 # rolling hash converts time and space complexity to O(n+m)
 #   technically O(n*m) worst case scenario because we still need to do a naive check in case of hash collisions, but we assume most substrings do not have same hash value
 
