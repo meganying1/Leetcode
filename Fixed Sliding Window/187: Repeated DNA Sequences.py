@@ -32,6 +32,9 @@ class Solution:
 # space complexity: O(n)
 #     n space for the hashes since numbers only take n auxiliary space and are capped at certain size
 
+# if numbers are very large, math operations become much slower, so we need to convert hashes to number smaller than cap
+#     this creates hash collisions, so we don't have guarantee that if our hashes match, the strings match as well
+
 # rolling hash converts time and space complexity of hasing and searching for a little string in a big text from O(n*m) to O(n+m)
 #   technically O(n*m) worst case scenario because we still need to do a naive check in case of hash collisions, but we assume most substrings do not have same hash value
 
