@@ -27,10 +27,12 @@ class Solution:
             counts[hashVal] += 1
             if counts[hashVal] == 2: ans.append(s[end-10:end])
         return ans
-# time complexity: O(n+10)
-# space complexity: O(n+10)
+# time complexity: O(n)
+#     we slide over window of size n and each time we slide, we do math operations in constant time
+# space complexity: O(n)
+#     n space for the hashes since numbers only take n auxiliary space and are capped at certain size
 
-# rolling hash converts time and space complexity to O(n+m)
+# rolling hash converts time and space complexity of hasing and searching for a little string in a big text from O(n*m) to O(n+m)
 #   technically O(n*m) worst case scenario because we still need to do a naive check in case of hash collisions, but we assume most substrings do not have same hash value
 
 """
