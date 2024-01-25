@@ -13,6 +13,28 @@ class Solution:
         length = len(s)
         if length <= 10: return []
 
+        end = 9
+        counts = defaultdict(int)
+        valMap = {'A':1, 'C':2, 'G':3, 'T':4}
+        ans = []
+        hashVal = 0
+        for i in range(10): hashVal = hashVal * 10 + valMap[s[i]]
+        counts[hashVal] += 1
+
+        while end+1 < length:
+            hashVal = ((hashVal % 1000000000) * 10) + valMap[s[end+1]]
+            end += 1
+            if hashVal in counts and counts[hashVal] == 1: ans.append(s[end-9:end+1])
+            counts[hashVal] += 1
+        return ans
+# recommend using start and end to represent range of window
+
+"""
+class Solution:
+    def findRepeatedDnaSequences(self, s: str) -> List[str]:
+        length = len(s)
+        if length <= 10: return []
+
         end = 10
         counts = defaultdict(int)
         valMap = {'A':1, 'C':2, 'G':3, 'T':4}
@@ -27,6 +49,7 @@ class Solution:
             counts[hashVal] += 1
             if counts[hashVal] == 2: ans.append(s[end-10:end])
         return ans
+"""
 # time complexity: O(n)
 #     we slide over window of size n and each time we slide, we do math operations in constant time
 # space complexity: O(n)
