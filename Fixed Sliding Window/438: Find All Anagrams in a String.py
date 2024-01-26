@@ -10,23 +10,24 @@ class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
         pLength, sLength = len(p), len(s)
         if pLength > sLength: return []
-        ans, pCounts, sCounts = [], defaultdict(int), defaultdict(int)
-        start, end = 0, pLength-1
-        for c in p: pCounts[c] += 1
-        for i in range(pLength): sCounts[s[i]] += 1
 
         def areAnagrams(sCounts, pCounts):
             for c in pCounts:
                 if pCounts[c] != sCounts[c]: return False
             return True
-
-        while end < sLength:
-            if areAnagrams(sCounts, pCounts): ans.append(start)
-            if end+1 == sLength: break
+            
+        pCounts, sCounts = defaultdict(int), defaultdict(int)
+        start, end = 0, pLength-1
+        for c in p: pCounts[c] += 1
+        for i in range(pLength): sCounts[s[i]] += 1
+        ans = [0] if areAnagrams(sCounts, pCounts) else []
+        while end < sLength-1:
             sCounts[s[start]] -= 1
             sCounts[s[end+1]] += 1
             start += 1
             end += 1
+            if areAnagrams(sCounts, pCounts): ans.append(start)
+        return ans
 
         return ans
 # time complexity: O(26n)
