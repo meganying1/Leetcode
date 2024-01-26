@@ -20,6 +20,7 @@ class Solution:
             start += 1
             end += 1
         return ans
+# size of minSum is not a concern because we have up to 2^64 space for an long, and k * threshold is well beneath that
         
 """
 class Solution:
