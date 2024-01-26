@@ -28,12 +28,28 @@ class Solution:
             end += 1
             if areAnagrams(sCounts, pCounts): ans.append(start)
         return ans
-
-        return ans
+        
 # time complexity: O(26n)
 #     time to check if two strings are anagrams is based on number of unique letters
 # if there are huge amount of letters, counts may become very large and comparisons will take a lot of time
 #     but rate at which those counts grow is much slower than rate at which product of prime values grow
+
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        pLength, sLength = len(p), len(s)
+        if pLength > sLength: return []
+        start, end = 0, pLength-1
+        pCounts, sCounts = Counter(p), Counter(s[i] for i in range(pLength))
+        ans = [0] if pCounts == sCounts else []
+        while end < sLength-1:
+            sCounts[s[start]] -= 1
+            sCounts[s[end+1]] += 1
+            start += 1
+            end += 1
+            if pCounts == sCounts: ans.append(start)
+        return ans
+        
+# can use Counter function to make comparison easier
 
 """
 class Solution:
