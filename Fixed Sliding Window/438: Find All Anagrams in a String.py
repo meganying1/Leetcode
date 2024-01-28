@@ -6,6 +6,30 @@
 # Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
 # An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        pLength, sLength = len(p), len(s)
+        if pLength > sLength: return []
+        start, end = 0, pLength-1
+        pCounts, sCounts = Counter(p), Counter(s[i] for i in range(pLength))
+        correctCounts = sum(1 for c in pCounts if sCounts[c] == pCounts[c])
+        unique = len(pCounts)
+        ans = [0] if correctCounts == unique else []
+        while end < sLength-1:
+            old, new = s[start], s[end+1]
+            if old in pCounts:
+                if sCounts[old] == pCounts[old]: correctCounts -= 1
+                elif sCounts[old]-1 == pCounts[old]: correctCounts += 1
+            sCounts[old] -= 1
+            if new in pCounts:
+                if sCounts[new] == pCounts[new]: correctCounts -= 1
+                elif sCounts[new]+1 == pCounts[new]: correctCounts += 1
+            sCounts[new] += 1
+            start += 1
+            end += 1
+            if correctCounts == unique: ans.append(start)
+        return ans
+# doing this changes code from O(26n) to O(n)
 
 """
 class Solution:
