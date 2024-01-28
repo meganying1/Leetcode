@@ -12,6 +12,28 @@ class Solution:
         if pLength > sLength: return []
         start, end = 0, pLength-1
         pCounts, sCounts = Counter(p), Counter(s[i] for i in range(pLength))
+        correctCounts = sum(1 for c in pCounts if sCounts[c] >= pCounts[c])
+        unique = len(pCounts)
+        ans = [0] if correctCounts == unique else []
+        while end < sLength-1:
+            old, new = s[start], s[end+1]
+            sCounts[old] -= 1
+            if sCounts[old] == pCounts[old]-1: correctCounts -= 1
+            sCounts[new] += 1
+            if sCounts[new] == pCounts[new]: correctCounts += 1
+            start += 1
+            end += 1
+            if correctCounts == unique: ans.append(start)
+        return ans
+# previous implementation was already very efficient, just to clean up code and decrease number of operations needed
+
+"""
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        pLength, sLength = len(p), len(s)
+        if pLength > sLength: return []
+        start, end = 0, pLength-1
+        pCounts, sCounts = Counter(p), Counter(s[i] for i in range(pLength))
         correctCounts = sum(1 for c in pCounts if sCounts[c] == pCounts[c])
         unique = len(pCounts)
         ans = [0] if correctCounts == unique else []
@@ -29,6 +51,7 @@ class Solution:
             end += 1
             if correctCounts == unique: ans.append(start)
         return ans
+"""
 # doing this changes code from O(26n) to O(n)
 
 """
