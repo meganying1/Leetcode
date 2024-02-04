@@ -14,6 +14,23 @@ class Solution:
         currSum = nums[end]
         ans = 1
         while start >= 0:
+            while (nums[end] * (end-start+1)) - currSum > k:
+                currSum -= nums[end]
+                end -= 1
+            ans = max(ans, end-start+1)
+            start -= 1
+            currSum += nums[start]
+        return ans
+
+"""
+class Solution:
+    def maxFrequency(self, nums: List[int], k: int) -> int:
+        length = len(nums)
+        nums.sort()
+        start, end = length-1, length-1
+        currSum = nums[end]
+        ans = 1
+        while start >= 0:
             while start > 0 and (nums[end] * (end-start+1)) - currSum <= k:
                 ans = max(ans, end-start+1)
                 start -= 1
@@ -25,3 +42,5 @@ class Solution:
             start -= 1
             currSum += nums[start]
         return ans
+"""
+# can be simplified
