@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/description/
+# https://leetcode.com/problems/frequency-of-the-most-frequent-element/description/
 # difficulty: medium
 # hash table, string, divide and conquer, sliding window
 
