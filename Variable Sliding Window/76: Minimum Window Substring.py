@@ -25,15 +25,10 @@ class Solution:
                     sCount[s[start]] -= 1
                     if sCount[s[start]]+1 == tCount[s[start]]: matches -= 1
                     start += 1
-            elif matches < tLen:
+            else:
                 while matches < tLen:
                     end += 1
                     if end == sLen: break
                     sCount[s[end]] += 1
                     if sCount[s[end]] <= tCount[s[end]]: matches += 1
-            else:
-                while matches > tLen:
-                    sCount[s[start]] -= 1
-                    if sCount[s[start]]+1 == tCount[s[start]]: matches -= 1
-                    start += 1
         return ans
