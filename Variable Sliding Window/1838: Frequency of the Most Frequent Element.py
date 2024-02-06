@@ -21,6 +21,10 @@ class Solution:
             start -= 1
             currSum += nums[start]
         return ans
+        
+# time complexity: O(n)
+# space complexity: O(1)
+#     we only have at most 26 letters in the set
 
 """
 class Solution:
