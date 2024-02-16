@@ -17,3 +17,9 @@ class Solution:
             if hours > h: lo = mid+1
             else: hi = mid
         return lo
+# time complexity: O(n * log(max(piles))
+#     outer while loop is O(log(max(piles))) time
+#     inner while loop is O(n) time
+# space complexity: O(1)
+
+# use lo < hi here because there is a minimum speed, meaning we don't need to check the case where lo == hi (that is the answer)
