@@ -9,6 +9,22 @@
 
 class Solution:
     def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        numPotions, numSpells = len(potions), len(spells)
+        ans = []
+        potions.sort()
+        for spell in spells:
+            needed = math.ceil(success / spell)
+            lo, hi = 0, numPotions-1
+            while lo <= hi:
+                mid = lo + ((hi-lo)//2)
+                if potions[mid] >= needed: hi = mid-1
+                else: lo = mid+1
+            ans.append(numPotions - lo)
+        return ans
+
+"""
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
         numPotions = len(potions)
         ans = []
         potions.sort()
@@ -16,3 +32,5 @@ class Solution:
             needed = math.ceil(success / spell)
             ans.append(numPotions - bisect_left(potions, needed))
         return ans
+"""
+# don't use bisect_left if question is simple enough like this one, because you run the risk of them thinking you don't know how to implement binary search
