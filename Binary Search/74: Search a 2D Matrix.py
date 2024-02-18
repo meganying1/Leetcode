@@ -20,3 +20,5 @@ class Solution:
             elif matrix[row][col] > target: hi = mid-1
             else: lo = mid+1
         return False
+# time complexity: O(log(m*n))
+# can also do two binary searches: O(log(rows) + log(cols)) = O(log(rows*cols))
