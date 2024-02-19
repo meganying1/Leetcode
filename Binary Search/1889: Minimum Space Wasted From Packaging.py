@@ -12,6 +12,27 @@
 class Solution:
     def minWastedSpace(self, packages: List[int], boxes: List[List[int]]) -> int:
         packages.sort()
+        totalSize = sum(packages)
+        ans = float("inf")
+        for supplier in boxes:
+            supplier.sort()
+            if supplier[-1] < packages[-1]: continue
+            lo = 0
+            totalSpace = 0
+            for size in supplier:
+                if size < packages[0]: continue
+                hi = bisect_right(packages, size)
+                totalSpace += size * (hi-lo)
+                lo = hi
+            ans = min(ans, totalSpace-totalSize)
+        return ans % (10**9 + 7) if ans != float("inf") else -1
+# time complexity: O(m*n*log(n))
+# space complexity: O(1)
+
+"""
+class Solution:
+    def minWastedSpace(self, packages: List[int], boxes: List[List[int]]) -> int:
+        packages.sort()
         prefixSum = [package for package in packages]
         for i in range(1, len(packages)): prefixSum[i] += prefixSum[i-1]
         ans = float("inf")
@@ -28,3 +49,7 @@ class Solution:
                 lo = hi
             ans = min(ans, waste)
         return ans % (10**9 + 7) if ans != float("inf") else -1
+"""
+# time complexity: O(m*n*log(n))
+# space complexity: O(n)
+# can avoid using prefix array to make more efficient
