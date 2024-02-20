@@ -12,3 +12,8 @@ class Solution:
         for num in nums2: nums1.insert(bisect_left(nums1, num), num)
         if length % 2 == 1: return nums1[length//2]
         return (nums1[(length//2) - 1] + nums1[length//2]) / 2
+# time complexity: O(m*n)
+#     loop on nums2: O(m)
+#     bisect_left: O(log(n+m))
+#     insert: O(log(n))
+#     total: m*(log(n+m) + n) = m*log(n+m) + m*n
