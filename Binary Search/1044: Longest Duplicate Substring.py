@@ -11,6 +11,55 @@ mods = []
 curr = 1
 for i in range(3 * 10**4):
     mods.append(curr)
+    curr *= 26
+    curr %= mod
+
+class Solution:
+
+    def longestDupSubstring(self, s: str) -> str:
+        length = len(s)
+        lo, hi = 1, length-1
+        ans = ""
+
+        def getVal(c):
+            return ord(c)-ord('a')+1
+
+        def returnDup(size):
+            seen = {}
+            start, end = 0, size-1
+            hashVal = 0
+            hashCoords = defaultdict(list)
+            for i in range(size): hashVal = (hashVal * 26 + getVal(s[i])) % mod
+            while end < length+1:
+                if hashVal in hashCoords: 
+                    newStr = s[start:end+1]
+                    for (prevStart, prevEnd) in hashCoords[hashVal]:
+                        if s[prevStart:prevEnd] == newStr: return newStr
+                hashCoords[hashVal].append((start, end+1))
+                if end+1 == length: break
+                hashVal -= (getVal(s[start]) * mods[size-1]) % mod
+                hashVal *= 26
+                hashVal += getVal(s[end+1])
+                hashVal %= mod
+                start += 1
+                end += 1
+            return ""
+
+        while lo <= hi:
+            size = lo + ((hi-lo)//2)
+            dup = returnDup(size)
+            if dup != "":
+                ans = dup
+                lo = size+1
+            else: hi = size-1
+        return ans
+
+"""
+mod = (10**9) + 7
+mods = []
+curr = 1
+for i in range(3 * 10**4):
+    mods.append(curr)
     curr *= 10
     curr %= mod
 
@@ -53,6 +102,10 @@ class Solution:
                 lo = size+1
             else: hi = size-1
         return ans
+"""
+# hashMap name can get kind of confusing, bad variable naming practice in SWE
+# no reason to make it a defaultdict(set), aren't leverating set in any way; list is less expensive if you aren't using benefits of a set
+# do hashVal *= 26 instead of 10l=; 26 is the base of the numeric system we're operating, so we end up with fewer collisions
 
 """
   class Solution:
