@@ -23,6 +23,12 @@ class Solution:
 # time complexity: O(n)
 # space complexity: O(1)
 
+# in general for DP:
+#     space = size of cache
+#     time = size of cache * time per cache call
+# usually easy to know when to use dp or not 
+#     many problems are: “you can do 1 of these 2 options over and over, what is the max score you can get?”
+
 """
 class Solution:
     def fib(self, n: int) -> int:
