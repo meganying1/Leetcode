@@ -13,7 +13,14 @@ class Solution:
                 cache[num] = min(dp(newNum) + 1, cache[num])
             return cache[num]
         return dp(n)
+# example of top-down dynamic programming
 # time complexity: O(n*root(n))
 #   there are n possible states (as defined by the parameters of your dp function / as defined by your cache)
 #   each state takes root(n) time
 # space complexity: O(n)
+
+# if we were to use recursion without cashomg"
+#     time complexity: O(root(n)^n)
+#         each node has root(n) children and the total depth of the tree is n
+#     space complexity: O(n)
+#         the depth of the tree is n
