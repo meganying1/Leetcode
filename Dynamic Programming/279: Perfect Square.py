@@ -19,7 +19,7 @@ class Solution:
 #   each state takes root(n) time
 # space complexity: O(n)
 
-# if we were to use recursion without cashomg"
+# if we were to use recursion without cashing:
 #     time complexity: O(root(n)^n)
 #         each node has root(n) children and the total depth of the tree is n
 #     space complexity: O(n)
