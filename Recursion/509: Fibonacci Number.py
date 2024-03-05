@@ -8,6 +8,21 @@
 #   F(n) = F(n - 1) + F(n - 2), for n > 1.
 # Given n, calculate F(n).
 
+class Solution:
+    def fib(self, n: int) -> int:
+        if n == 0: return 0
+        prev, prev2 = 1, 0
+        for i in range(2, n+1):
+            prev = prev + prev2
+            prev2 = prev - prev2
+        return prev
+# space-optimized tabluation:
+#     can optimize space by overwriting part of cache continuously
+#     typically cannot optimize time
+#     not possible with bottom-up memoization because of its recursive nature
+# time complexity: O(n)
+# space complexity: O(1)
+
 """
 class Solution:
     def fib(self, n: int) -> int:
@@ -18,6 +33,7 @@ class Solution:
             dp[i] = dp[i-1] + dp[i-2]
         return dp[-1]
 """
+# can be further optimized because not all values need to be stored in dp array: only values that matter are two previous values
 # tabulation:
 #     we have to define the order in which we solve the problem, so we start at the base cases, and build up
 #     that seems simple, but in many problems the “order” we fill out the cache table becomes more complex, often requiring jumping around various parts of the table
