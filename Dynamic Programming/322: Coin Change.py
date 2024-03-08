@@ -22,3 +22,5 @@ class Solution:
             return res
         ans = dp(amount)
         return ans if ans != float('inf') else -1
+# time complexity: O(amount * len(coins))
+# space complexity: O(amount)
