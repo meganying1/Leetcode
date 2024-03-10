@@ -59,3 +59,17 @@ class Solution:
 # bottom-up
 # time complexity: O(n*m)
 # space complexity: O(n*m)
+
+"""
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        cache = [[None] * n for i in range(m)]
+        def dp(m, n):
+            if m == 0 or n == 0: return 1
+            if cache[m-1][n-1] != None: return cache[m-1][n-1]
+            ans = dp(m-1, n) + dp(m, n-1)
+            cache[m-1][n-1] = ans
+            return ans
+        return dp(m-1, n-1)
+"""
+# top down with memoization (just for practice)
