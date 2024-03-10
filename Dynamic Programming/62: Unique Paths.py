@@ -73,3 +73,5 @@ class Solution:
         return dp(m-1, n-1)
 """
 # top down with memoization (just for practice)
+# time complexity: O(n*m)
+# space complexity: O(n*m)
