@@ -9,6 +9,29 @@
 
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
+        if n < m:
+            prevRow = [1] * n
+            for row in range(1, m):
+                prevCol = 1
+                for col in range(1, n):
+                    prevRow[col] += prevCol
+                    prevCol = prevRow[col]
+            return prevRow[-1]
+        else:
+            prevCol = [1] * m
+            for col in range (1, n):
+                prevRow = 1
+                for row in range(1, m):
+                    prevCol[row] += prevRow
+                    prevRow = prevCol[row]
+            return prevCol[-1]
+# space optimized bottom-up
+# time complexity: O(n*m)
+# space complexity: O(min(m, n))
+
+"""
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
         prevRow = [1] * n
         for row in range(1, m):
             prevCol = 1
@@ -16,9 +39,11 @@ class Solution:
                 prevRow[col] += prevCol
                 prevCol = prevRow[col]
         return prevRow[-1]
-# time optimized bottom-up
+"""
+# space optimized bottom-up
 # time complexity: O(n*m)
 # space complexity: O(n)
+#     can do even better by choosing to iterate in direction which allows cache to be smaller
 
 """
 class Solution:
