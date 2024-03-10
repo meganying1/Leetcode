@@ -9,6 +9,21 @@
 
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
+        prevRow = [1] * n
+        row = 1
+        for row in range(1, m):
+            prevCol = 1
+            for col in range(1, n):
+                prevRow[col] += prevCol
+                prevCol = prevRow[col]
+        return prevRow[-1]
+# time optimized bottom-up
+# time complexity: O(n*m)
+# space complexity: O(n)
+
+"""
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
         dp = [[0] * n] * m
         for col in range(n): dp[0][col] = 1
         for row in range(m): dp[row][0] = 1
@@ -16,3 +31,7 @@ class Solution:
             for col in range(1, n):
                 dp[row][col] = dp[row-1][col] + dp[row][col-1]
         return dp[m-1][n-1]
+"""
+# bottom-up
+# time complexity: O(n*m)
+# space complexity: O(n*m)
