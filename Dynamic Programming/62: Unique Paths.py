@@ -10,7 +10,6 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         prevRow = [1] * n
-        row = 1
         for row in range(1, m):
             prevCol = 1
             for col in range(1, n):
