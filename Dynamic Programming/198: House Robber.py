@@ -35,3 +35,21 @@ class Solution:
 # bottom-up
 # time complexity: O(n)
 # space complexity: O(n)
+
+"""
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        cache = [None] * (n+1)
+        def dp(house):
+            if house == 0: return 0
+            if house == 1 or house == 2: return nums[house-1]
+            if cache[house] != None: return cache[house]
+            ans = nums[house-1] + max(dp(house-2), dp(house-3))
+            cache[house] = ans
+            return ans
+        return max(dp(n), dp(n-1))
+"""
+# top-down with memoization
+# time complexity: O(n)
+# space complexity: O(n)
