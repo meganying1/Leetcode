@@ -24,6 +24,8 @@ class Solution:
             checkPal(i, i)
             checkPal(i, i+1)
         return s[ansStart:ansEnd+1]
+# time complexity: O(n^2)
+# space complexity: O(1)
 
 """
 class Solution:
