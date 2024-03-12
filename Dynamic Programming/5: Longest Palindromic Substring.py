@@ -24,6 +24,7 @@ class Solution:
             checkPal(i, i)
             checkPal(i, i+1)
         return s[ansStart:ansEnd+1]
+# bottom-up
 # time complexity: O(n^2)
 # space complexity: O(1)
 
@@ -58,6 +59,33 @@ class Solution:
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         length = len(s)
+        cache = {}
+        ansStart, ansEnd = 0, 0
+        
+        def dp(start, end):
+            nonlocal ansStart
+            nonlocal ansEnd
+            if start >= end: return True
+            if (start, end) in cache: return cache[(start, end)]
+            if dp(start+1, end-1) and s[start] == s[end]: 
+                cache[(start, end)] = True
+                if (end-start+1) > (ansEnd-ansStart+1): ansStart, ansEnd = start, end
+            else: cache[(start, end)] = False
+            return cache[(start, end)]
+
+        for start in range(length):
+            for end in range(length-1, start-1, -1):
+                dp(start, end)
+        return s[ansStart:ansEnd+1]
+"""
+# top-down with memoization
+# time complexity: O(n^2)
+# space complexity: O(n^2)
+
+"""
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        length = len(s)
         cache = [[None] * (length+1) for i in range(length+1)]
         
         def dp(start, end):
@@ -76,7 +104,7 @@ class Solution:
                     ans = s[start:end+1]
         return ans
 """
-# top-down
+# top-down with memoization
 # time complexity: O(n^3)
 #     double nested for loop takes O(n^2) time and substring call s[start:end+1] takes O(n) time
 #     can save time by storing answer as start and end points rather than string
