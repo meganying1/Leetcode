@@ -15,3 +15,5 @@ class Solution:
                 if nums[i] > nums[j]: greatest = max(greatest, dp[j])
             dp[i] += greatest
         return max(dp)
+# time complexity: O(n^2)
+# space complexity: O(n)
