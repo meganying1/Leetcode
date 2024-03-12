@@ -8,7 +8,6 @@
 #   For example, "ace" is a subsequence of "abcde".
 # A common subsequence of two strings is a subsequence that is common to both strings.
 
-
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         len1, len2 = len(text1), len(text2)
