@@ -63,19 +63,16 @@ class Solution:
         ansStart, ansEnd = 0, 0
         
         def dp(start, end):
-            nonlocal ansStart
-            nonlocal ansEnd
             if start >= end: return True
             if (start, end) in cache: return cache[(start, end)]
-            if dp(start+1, end-1) and s[start] == s[end]: 
-                cache[(start, end)] = True
-                if (end-start+1) > (ansEnd-ansStart+1): ansStart, ansEnd = start, end
+            if dp(start+1, end-1) and s[start] == s[end]: cache[(start, end)] = True
             else: cache[(start, end)] = False
             return cache[(start, end)]
 
         for start in range(length):
             for end in range(length-1, start-1, -1):
-                dp(start, end)
+                if dp(start, end) and (end-start) > (ansEnd-ansStart):
+                    ansStart, ansEnd = start, end
         return s[ansStart:ansEnd+1]
 """
 # top-down with memoization
