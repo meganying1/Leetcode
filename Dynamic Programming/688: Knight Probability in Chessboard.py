@@ -8,7 +8,6 @@
 
 class Solution:
     def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
-        if k == 0: return 1
         cache = {}
         moves = [(-1, -2), (-2, -1), (-2, 1), (-1, 2), (1, -2), (2, -1), (2, 1), (1, 2)]
 
