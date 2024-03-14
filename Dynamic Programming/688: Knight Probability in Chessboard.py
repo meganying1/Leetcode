@@ -13,22 +13,23 @@ class Solution:
         cache = {}
         moves = [(-1, -2), (-2, -1), (-2, 1), (-1, 2), (1, -2), (2, -1), (2, 1), (1, 2)]
 
-        def boardMoves(prevRow, prevCol):
+        def boardMoves(currRow, currCol):
             positions = []
             for (rowChange, colChange) in moves:
-                newRow, newCol = prevRow + rowChange, prevCol + colChange
+                newRow, newCol = currRow + rowChange, currCol + colChange
                 if newRow >= 0 and newRow < n and newCol >= 0 and newCol < n:
                     positions.append((newRow, newCol))
             return positions
 
-        def dp(prevRow, prevCol, remaining):
+        def dp(currRow, currCol, remaining):
             if remaining == 0: return 1
-            if (prevRow, prevCol, remaining) in cache: return cache[(prevRow, prevCol, remaining)]
-            positions = boardMoves(prevRow, prevCol)
+            key = (currRow, currCol, remaining)
+            if key in cache: return cache[key]
+            positions = boardMoves(currRow, currCol)
             ans = 0
             for pos in positions:
                 ans += dp(pos[0], pos[1], remaining-1)
-            cache[(prevRow, prevCol, remaining)] = ans
+            cache[key] = ans
             return ans
         
         return dp(row, column, k) / totalPaths
