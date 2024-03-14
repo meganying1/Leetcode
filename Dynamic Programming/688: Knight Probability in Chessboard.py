@@ -9,7 +9,6 @@
 class Solution:
     def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
         if k == 0: return 1
-        totalPaths = 8**k
         cache = {}
         moves = [(-1, -2), (-2, -1), (-2, 1), (-1, 2), (1, -2), (2, -1), (2, 1), (1, 2)]
 
@@ -28,11 +27,11 @@ class Solution:
             positions = boardMoves(currRow, currCol)
             ans = 0
             for pos in positions:
-                ans += dp(pos[0], pos[1], remaining-1)
+                ans += dp(pos[0], pos[1], remaining-1) / 8
             cache[key] = ans
             return ans
         
-        return dp(row, column, k) / totalPaths
+        return dp(row, column, k)
 # top-down with memoization
 # time complexity: O(n*n*k)
 # space complexity: O(n*n*k)
