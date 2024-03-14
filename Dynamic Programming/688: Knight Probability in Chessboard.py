@@ -32,3 +32,8 @@ class Solution:
             return ans
         
         return dp(row, column, k) / totalPaths
+# top-down with memoization
+# time complexity: O(n*n*k)
+# space complexity: O(n*n*k)
+#     each states takes O(8) time
+#     there are n*n*k states
