@@ -9,7 +9,6 @@
 
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        minVal = min(coins)
         cache = {coin:1 for coin in coins}
         def dp(n):
             if n == 0: return 0
