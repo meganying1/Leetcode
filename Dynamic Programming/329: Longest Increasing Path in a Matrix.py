@@ -27,6 +27,7 @@ class Solution:
             for col in range(n):
                 ans = max(ans, dp(row, col))
         return ans
-  # top-down with memoization
-  # time complexity: O(n*m)
-  # space complexity: O(n*m)
+# top-down with memoization
+# time complexity: O(n*m)
+#     we have n*m states, and each state takes O(4) time
+# space complexity: O(n*m)
