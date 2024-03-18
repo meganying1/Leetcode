@@ -43,5 +43,6 @@ class Solution:
 # top-down with memoization
 # time complexity: O(len(s)^2) + O(total chars in wordDict)
 #     while loop and substring check each take n time
+#     O(len(wordDict) * (average length of word in wordDict)) = O(total chars in wordDict)
 # space complexity: O(total chars in wordDict) + O(len(s))
 #     we require O(len(s)) space for cache
