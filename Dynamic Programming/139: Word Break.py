@@ -41,8 +41,7 @@ class Solution:
         return dp(0)
 
 # top-down with memoization
-# time complexity: O(n^3)
-#   we have n states
-#   we loop over each state n times
-#   within each loop, we do an n substring slice
-# space complexity: O(len(wordDict) + len(s))
+# time complexity: O(len(s)^2) + O(total chars in wordDict)
+#     while loop and substring check each take n time
+# space complexity: O(total chars in wordDict) + O(len(s))
+#     we require O(len(s)) space for cache
