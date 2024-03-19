@@ -21,3 +21,8 @@ class Solution:
 # space-optimized bottom-up
 # time complexity: O(n)
 # space complexity: O(1)
+
+# assume we have some array: [a, b, c, d, e] and we know the maximum and minimum product of the subarray from a-d inclusive
+# then clearly, we can derive the maximum product for the subarray from a-e:
+#     if e is positive, the maximum product subarray now is e * maximum from a-d
+#     if e is negative, the maximum product subarray now is e * minimum from a-d
