@@ -29,4 +29,6 @@ class Solution:
         return reverse(None, head)
 # recursive solution
 # time complexity: O(n)
-# space complexity: O(1)
+# space complexity: O(n)
+#     recursion never has a space complexity of O(1)
+#     space complexity is proportional to depth of recursion tree
