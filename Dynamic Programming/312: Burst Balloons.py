@@ -26,3 +26,10 @@ class Solution:
             return ans
 
         return dp(1, n)
+# top-down with memoization
+# time complexity: O(n^2)
+# space complexity: O(n^2)
+        
+# we know for sure in a given subarray, one balloon must be the last one to be popped, so we can test all of them
+# we can then break the problem down into new subarrays
+#     if we have balloons 1 2 3 4 5 6 7 and balloon 5 is popped last, then balloons 1 2 3 4 and balloons 6 7 form two separate subarrays, they never “connect” since the 5 balloon gets popped last
