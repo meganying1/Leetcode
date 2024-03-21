@@ -27,7 +27,9 @@ class Solution:
 
         return dp(1, n)
 # top-down with memoization
-# time complexity: O(n^2)
+# time complexity: O(n^3)
+#     we have n^2 states
+#     each state takes O(n) time due to the for loop
 # space complexity: O(n^2)
         
 # we know for sure in a given subarray, one balloon must be the last one to be popped, so we can test all of them
