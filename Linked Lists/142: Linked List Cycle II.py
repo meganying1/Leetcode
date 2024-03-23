@@ -14,11 +14,27 @@ class Solution:
             ptr1 = ptr1.next
             ptr2 = ptr2.next.next
             if ptr1 == ptr2:
-                ptr2 = head
-                while ptr1 != ptr2:
-                    ptr1 = ptr1.next
-                    ptr2 = ptr2.next
-                return ptr1
-        return None
+                break
+        if not ptr2 or not ptr2.next: return None
+        ptr2 = head
+        while ptr1 != ptr2:
+            ptr1 = ptr1.next
+            ptr2 = ptr2.next
+        return ptr1
 # time complexity: O(n)
 # space complexity: O(1)
+
+# proof:
+#     let:
+#         p = distance from beginning to the head of the cycle
+#         c = distance from the head of the cycle to the point where slow and fast pointer collided: the “collision point”
+#         loop = length of the cycle
+#     therefore, loop - c = distance from the collision point to the head of the cycle
+
+#     we are trying to prove that p = loop - c
+#     fast pointer traveled: p + n*loop + c
+#     slow pointer traveled: p + c
+#     fast pointer traveled 2x as much as slow pointer: 2(p + c) = p + n*loop + c
+#     2p + 2c = p + n*loop + c
+#     p + c = n*loop
+#     p = n*loop - c
