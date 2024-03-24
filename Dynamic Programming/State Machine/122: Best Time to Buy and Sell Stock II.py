@@ -9,7 +9,6 @@
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        n = len(prices)
         holding, notHolding = -float("inf"), 0
         for price in prices:
             holding, notHolding = max(holding, notHolding-price), max(notHolding, holding+price)
