@@ -13,7 +13,9 @@ class Solution:
         dp = [[float(inf), 0] for i in range(k+1)]
         for price in prices:
             for i in range(1, k + 1):
+                # price - dp[i-1][1] is how much you need to spend for the next transaction
                 dp[i][0] = min(dp[i][0], price - dp[i-1][1])
+                # price - dp[i][0] is how much you can achieve from the previous min cost
                 dp[i][1] = max(dp[i][1], price - dp[i][0])
         return dp[k][1]
 # space optimized version
