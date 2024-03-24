@@ -10,6 +10,19 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         n = len(prices)
+        holding, notHolding = -float("inf"), 0
+        for price in prices:
+            holding, notHolding = max(holding, notHolding-price), max(notHolding, holding+price)
+        return notHolding
+# "state machine" solution
+#     we are either in a state of holding a stock or not holding a stock
+# time complexity: O(n)
+# space complexity: O(1)
+
+"""
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
         cache = {}
 
         def dp(holding, day):
@@ -26,6 +39,7 @@ class Solution:
             return ans
         
         return max(dp(True, 0)-prices[0], dp(False, 0))
+"""
 # using "normal" bottom-up dynamic programming solution
 # time complexity: O(n)
 # space complexity: O(n)
