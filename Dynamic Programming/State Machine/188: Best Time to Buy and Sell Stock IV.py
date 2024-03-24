@@ -7,6 +7,20 @@
 # Find the maximum profit you can achieve. You may complete at most k transactions: i.e. you may buy at most k times and sell at most k times.
 # Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
 
+class Solution:
+    def maxProfit(self, k: int, prices: List[int]) -> int:
+        if k == 0: return 0
+        dp = [[float(inf), 0] for i in range(k+1)]
+        for price in prices:
+            for i in range(1, k + 1):
+                dp[i][0] = min(dp[i][0], price - dp[i-1][1])
+                dp[i][1] = max(dp[i][1], price - dp[i][0])
+        return dp[k][1]
+# space optimized version
+# time complexity: O(n*k)
+# space complexity: O(k)
+# other solution will suffice, and will probably only get a problem this hard from trading companies
+
 """
 class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
