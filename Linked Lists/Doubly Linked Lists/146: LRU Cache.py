@@ -5,9 +5,9 @@
 # problem:
 # Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
 # Implement the LRUCache class:
-#   LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
-#   int get(int key) Return the value of the key if the key exists, otherwise return -1.
-#   void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+#     LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+#     int get(int key) Return the value of the key if the key exists, otherwise return -1.
+#     void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
 # The functions get and put must each run in O(1) average time complexity.
 
 class ListNode:
@@ -70,7 +70,8 @@ class LRUCache:
         if self.size == self.capacity: self.deleteRight()
         else: self.size += 1
 
-# Your LRUCache object will be instantiated and called as such:
-# obj = LRUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
+# takeaways:
+#     1) high level for how to implement a DLL
+#     2) that if we want O(1) removal from an arbitrary position, we can use a linked list
+#     3) you can use a hashmap to store references to the nodes
+#     4) you can have flexibility in what you store on the nodes, including the key itself 
