@@ -20,3 +20,7 @@ class Solution:
         
         dfs(root)
         return ans
+# time complexity: O(n)
+# space complexity:
+#     O(logn) for balanced tree
+#     O(n) for stick tree
