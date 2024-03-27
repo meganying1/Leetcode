@@ -33,3 +33,5 @@ class Solution:
                 copyCurr.random = newNode
             curr = curr.next
         return dummy.next
+# time complexity: O(n)
+# space complexity: O(n)
