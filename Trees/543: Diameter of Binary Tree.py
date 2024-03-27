@@ -22,5 +22,5 @@ class Solution:
         return ans
 # time complexity: O(n)
 # space complexity:
-#     O(logn) for balanced tree
+#     O(log(n)) for balanced tree
 #     O(n) for stick tree
