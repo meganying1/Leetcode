@@ -21,6 +21,6 @@ class Solution:
         dfs(root)
         return ans
 # time complexity: O(n)
-# space complexity:
+# space complexity: O(height)
 #     O(log(n)) for balanced tree
 #     O(n) for stick tree
