@@ -22,3 +22,8 @@ class Solution:
         
         maxPathSumHelper(root)
         return ans
+# time complexity: O(n)
+# space complexity: O(height of root)
+# important takeaway:
+#     when you need to figure out some result for something, you can try to figure out the result for every X
+#     and if you try it for all X, you have the result
