@@ -7,6 +7,23 @@
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root: return []
+        queue = deque()
+        queue.append(root)
+        ans = []
+        while len(queue) > 0:
+            level = []
+            for i in range(len(queue)):
+                curr = queue.popleft()
+                level.append(curr.val)
+                if curr.left: queue.append(curr.left)
+                if curr.right: queue.append(curr.right)
+            ans.append(level)
+        return ans
+
+"""
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         nodeDict = defaultdict(list)
 
         def search(root, level):
@@ -18,3 +35,4 @@ class Solution:
 
         search(root, 0)
         return [val for val in nodeDict.values()]
+"""
