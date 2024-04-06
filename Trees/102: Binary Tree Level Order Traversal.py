@@ -19,6 +19,9 @@ class Solution:
                 if curr.right: queue.append(curr.right)
             ans.append(level)
         return ans
+# time complexity: O(n)
+# space complexity: O(n)
+#     dependent on max number of nodes in a level, which is equal to n/2
 
 """
 class Solution:
