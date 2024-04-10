@@ -37,3 +37,5 @@ class Solution:
             return newNode
 
         return helper(0, n-1, 0, n-1)
+# time complexity: O(n)
+# space complexity: O(n)
