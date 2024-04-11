@@ -21,10 +21,16 @@ class Solution:
             traverse(node.right)
         traverse(root)
         return ans
+# we stop descending down the tree once we hit a node that is null -> O(height of tree) time
+#     could be O(n) time and space
+# we want a solution that is O(k) time and space
 
+"""
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         def getInorder(node):
             if not node: return []
             return getInorder(node.left) + [node.val] + getInorder(node.right)
         return getInorder(root)[k-1]
+"""
+# avoid adding arrays together: takes O(n) time
