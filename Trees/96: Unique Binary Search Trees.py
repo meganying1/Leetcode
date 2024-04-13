@@ -18,3 +18,5 @@ class Solution:
             return ans
         
         return dp(n)
+# time complexity: O(n^2)
+# space complexity: O(n)
