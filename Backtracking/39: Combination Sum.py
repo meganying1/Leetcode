@@ -27,9 +27,9 @@ class Solution:
         
         backtrack(0, target)
         return ans
-# time complexity: O(target * 2^target)
+# time complexity: O(target * 2^(max(target, n))
     # size of tree: 2^target
-        # branching factor is 2 and depth of tree is target
+        # branching factor is 2 and depth of tree is max(target, n)
     # time complexity of each node: O(target)
     # we assume that target > n
 # space complexity: O(target)
