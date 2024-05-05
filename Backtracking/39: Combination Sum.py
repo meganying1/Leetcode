@@ -31,6 +31,7 @@ class Solution:
     # size of tree: 2^target
         # branching factor is 2 and depth of tree is target
     # time complexity of each node: O(target)
+    # we assume that target > n
 # space complexity: O(target)
 
 """
