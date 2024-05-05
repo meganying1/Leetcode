@@ -1,3 +1,11 @@
+# https://leetcode.com/problems/sort-an-array/
+# difficulty: medium
+# topics: array, divide and conquer, sorting, heap (priority queue), merge sort, bucket sort, radix sort, counting sort
+
+# problem:
+# Given an array of integers nums, sort the array in ascending order and return it.
+# You must solve the problem without using any built-in functions in O(nlog(n)) time complexity and with the smallest space complexity possible.
+
 class Solution:
     def merge(self, list1, list2):
         len1, len2 = len(list1), len(list2)
