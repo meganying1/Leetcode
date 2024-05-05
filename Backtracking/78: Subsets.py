@@ -10,6 +10,29 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         length = len(nums)
         ans = []
+        path = []
+         
+        def backtrack(i):
+            if i == length:
+                ans.append(path[:])
+                return
+            backtrack(i+1)
+            path.append(nums[i])
+            backtrack(i+1)
+            path.pop()
+
+        backtrack(0)
+        return ans
+# time complexity: O(n * 2^n)
+    # there are still 2^n nodes, and each node still takes n time because we are making a copy of path
+# space complexity: O(n)
+    # we are reusing the variable path
+
+"""
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        length = len(nums)
+        ans = []
          
         def backtrack(i, path):
             if i == length:
@@ -20,6 +43,7 @@ class Solution:
 
         backtrack(0, [])
         return ans
+"""
 # time complexity: O(n * 2^n)
     # visualize the code as a tree: each node is a subset
     # there are 2^n subsets for a set of size n of unique elements
