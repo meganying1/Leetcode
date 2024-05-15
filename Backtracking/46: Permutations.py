@@ -29,3 +29,10 @@ class Solution:
             backtrack(i, 1)
             path.pop()
         return ans
+# time complexity: O(n * n!)
+#     first layer of tree has 1 node, second has 1*2 nodes, third has 1*2*3 nodes, fourth has 1*2*3*4 nodes, etc. -> number of nodes is n!
+#     each node takes n time
+#         for loop takes n time, but not every iteration of the for loop creates a child
+#         as you go deeper down the tree, each node has fewer and fewer children
+#         you can mentally model this as all the non-leaf nodes take n time to do a for loop and all the leaf nodes take n time to serialize
+# space complexity: O(n)
