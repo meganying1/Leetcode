@@ -25,8 +25,13 @@ class Solution:
                 backtrack(newRow, newCol, i+1)): return True
             visited[row][col] = False
             return False
-
+            
         for row in range(rows):
             for col in range(cols):
                 if backtrack(row, col, 0): return True
         return False
+# time complexity: O(m * n * 3^k)
+#     branching factor is at most 3 for all decisions except first one
+#     depth of recursion is k (length of word)
+#     we create m * n trees
+# space complexity: O(m * n)
