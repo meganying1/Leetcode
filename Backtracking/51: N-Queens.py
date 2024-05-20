@@ -30,6 +30,16 @@ class Solution:
 
         backtrack(0)
         return ans
+# time complexity: O(n^2 * n!)
+#     the tree has n! nodes
+#         first layer has n nodes, second layer has n-1 nodes, etc.
+#     non-leaf nodes take O(n^2) time
+#         for loop takes O(n) time, and append inside of for loop takes O(n) time
+#     leaf nodes also take O(n^2) time
+#         each solution has n strings of length n, so it takes n^2 time to copy over the solution
+# space complexity: O(n^2)
+#     callstack has depth of n, and the seen sets take O(n) space
+#     board takes n^2 space
 
 """
 class Solution:
