@@ -21,3 +21,5 @@ class Solution:
                 if ((c == ")" and last != "(") or (c == "}" and last != "{") or 
                 (c == "]" and last != "[")): return False
         return not stack
+# time complexity: O(n)
+# space complexity: O(n)
