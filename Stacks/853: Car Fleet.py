@@ -20,5 +20,6 @@ class Solution:
             if timeToTarget and timeToTarget[-1] >= time: continue
             timeToTarget.append(time)
         return len(timeToTarget)
-# time complexity: O(sort)
+# time complexity: O(nlogn)
+#     time complexity of sort is O(nlogn)
 # space complexity: O(n)
