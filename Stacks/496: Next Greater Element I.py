@@ -17,11 +17,24 @@ class Solution:
                 last = stack.pop()
                 greaterElemDict[last] = nums2[i]
             stack.append(nums2[i])
-        for num in nums1:
-            if num in greaterElemDict: ans.append(greaterElemDict[num])
-            else: ans.append(-1)
-        return ans
+        return [greaterElemDict[num] if num in greaterElemDict else -1]
 # time complexity: O(n + m) -> O(m)
 #   n is length of nums1 and m is length of nums2
 #   m is always greater than n
 # space complexity: O(n + m) -> O(m)
+
+"""
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        stack, ans = [], []
+        greaterElemDict = {}
+        for i in range(len(nums2)):
+            while stack and stack[-1] < nums2[i]:
+                last = stack.pop()
+                greaterElemDict[last] = nums2[i]
+            stack.append(nums2[i])
+        for num in nums1:
+            if num in greaterElemDict: ans.append(greaterElemDict[num])
+            else: ans.append(-1)
+        return ans
+"""
