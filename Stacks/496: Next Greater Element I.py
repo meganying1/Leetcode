@@ -17,7 +17,7 @@ class Solution:
                 last = stack.pop()
                 greaterElemDict[last] = nums2[i]
             stack.append(nums2[i])
-        return [greaterElemDict[num] if num in greaterElemDict else -1]
+        return [greaterElemDict[num] if num in greaterElemDict else -1 for num in nums1]
 # time complexity: O(n + m) -> O(m)
 #   n is length of nums1 and m is length of nums2
 #   m is always greater than n
@@ -38,3 +38,4 @@ class Solution:
             else: ans.append(-1)
         return ans
 """
+# can change solution to make it briefer
