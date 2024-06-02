@@ -21,3 +21,5 @@ class Solution:
             if distance(x, y) > d:
                 heapq.heappushpop(heap, (-distance(x, y), x, y))
         return [[x, y] for (d, x, y) in heap]
+# time complexity: O(n * logk)
+# space complexity: O(n)
