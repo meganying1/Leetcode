@@ -14,7 +14,11 @@ class Solution:
         for val in nums[k:]:
             if val > heap[0]: heapq.heappushpop(heap, val)
         return heap[0]
-# time complexity: O(n + klogk)
+# time complexity: O((n-k) * logk)
+#     we push onto the heap n-k times in the worst case scenario and heappushpop takes O(logk) time where k is the size of the heap
+# space complexity: O(n)
+#     we have a heap of size k
+#     we create an array of size n-k in the for loop
 
 """
 class Solution:
