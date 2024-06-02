@@ -14,6 +14,7 @@ class Solution:
         for val in nums[k:]:
             if val > heap[0]: heapq.heappushpop(heap, val)
         return heap[0]
+# time complexity: O(n + klogk)
 
 """
 class Solution:
