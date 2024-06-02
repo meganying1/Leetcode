@@ -23,9 +23,9 @@ class KthLargest:
             self.len += 1
         elif self.heap[0] < val: heapq.heappushpop(self.heap, val)
         return self.heap[0]
-# time complexity: O(n + k * logk)
-#     builtin heapify takes O(n) time
-#     popping takes O(logk) time and we pop k times
+# time complexity: O(n * logk))
+#     in the worst case, we push all values onto the heap
+#     pushing a new value onto the heap takes O(logk) time
 # space complexity: O(k)
 
 """
