@@ -23,3 +23,53 @@ class KthLargest:
             self.len += 1
         elif self.heap[0] < val: heapq.heappushpop(self.heap, val)
         return self.heap[0]
+# time complexity: O(n * logk)
+# space complexity: O(k)
+
+"""
+class minHeap:
+
+    def __init__(self, nums, k):
+        self.nums = []
+        self.len = 0
+        self.k = k
+        for val in nums: self.heappush(val)
+    
+    def siftup(self, i):
+        while i//2 >= 0:
+            if self.nums[i//2] > self.nums[i]:
+                self.nums[i//2], self.nums[i] = self.nums[i], self.nums[i//2]
+                i //= 2
+            else: return
+        
+    def minchild(self, i):
+        if 2*i + 1 >= self.len or self.nums[2*i] < self.nums[2*i + 1]: return 2*i
+        return 2*i + 1
+    
+    def siftdown(self, i):
+        while 2*i < self.len:
+            minI = self.minchild(i)
+            if self.nums[i] > self.nums[self.minchild(i)]:
+                self.nums[minI], self.nums[i] = self.nums[i], self.nums[minI]
+                i = minI
+            else: return
+
+    def heappush(self, val):
+        if self.len < self.k:
+            self.nums.append(val)
+            self.len += 1
+            self.siftup(self.len-1)
+        elif val > self.nums[0]:
+            self.nums[0] = val
+            self.siftdown(0)
+
+class KthLargest:
+
+    def __init__(self, k: int, nums: List[int]):
+        self.heap = minHeap(nums, k)
+
+    def add(self, val: int) -> int:
+        self.heap.heappush(val)
+        return self.heap.nums[0]
+"""
+# for practice implementing heap class
