@@ -16,8 +16,6 @@ class MedianFinder:
     def __init__(self):
         self.minHeap = []
         self.maxHeap = []
-        heapq.heapify(self.minHeap)
-        heapq.heapify(self.maxHeap)
 
     def addNum(self, num: int) -> None:
         if len(self.minHeap) == len(self.maxHeap):
@@ -28,3 +26,7 @@ class MedianFinder:
     def findMedian(self) -> float:
         if len(self.minHeap) == len(self.maxHeap): return (self.minHeap[0]-self.maxHeap[0])/2
         return self.minHeap[0]
+# time complexity: O(nlogn)
+#     we add n numbers, and it takes log(n/2) time to add
+#     log(n/2) = logn - log2 -> simplifies to logn time
+# space complexity: O(n)
