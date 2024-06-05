@@ -15,7 +15,7 @@ class Solution:
         for val in nums[k:]:
             if val > heap[0]: heapq.heappushpop(heap, val)
         return heap[0]
-# time complexity: O((n-k) * logk)
+# time complexity: O(nlogk)
 #     we push onto the heap n-k times in the worst case scenario and heappushpop takes O(logk) time where k is the size of the heap
 # space complexity: O(n)
 #     we have a heap of size k
@@ -29,7 +29,34 @@ class Solution:
         return nums[0]
 """
 
-# quickselect solution
+# quickselect solution (better solution)
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        
+        def quickselect(arr, k):
+            randInd = random.randint(0, len(arr)-1)
+            randPivot = arr[randInd]
+            left = [num for num in arr if num <= randPivot]
+            for i, num in enumerate(left):
+                if num == randPivot:
+                    left.pop(i)
+                    break
+            right = [num for num in arr if num > randPivot]
+            n = len(right)
+            if n >= k: return quickselect(right, k)
+            elif n+1 == k: return randPivot
+            return quickselect(left, k-n-1)
+
+        return quickselect(nums, k)
+# time complexity: O(n)
+# space complexity: O(n)
+#     first iteration uses n space for left and right array, second uses n/2 space, etc.
+#     n + n/2 + n/4 + ... reduces to n
+
+# if we didn't use randomness:
+#     time complexity: O(n^2)
+#     space complexity: O(n^2)
+
 """
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -53,5 +80,15 @@ class Solution:
 
         return helper(0, n-1)
 """
-# worst case scenario time complexity is O(n^2)
+# time complexity: O(n^2)
+#     always true for quick select without randomness
+#     worst case scenario occurs when rightmost value in array is the smallest in the array and we call partition() n times
 #     to fix: choose random index instead of r as pivot
+# space complexity: O(n)
+
+# if we used random pivot instead:
+#     time complexity: O(n)
+#         technically, worst case scenario is O(n^2), but it will only occur if we are very very unlucky
+#         on average we process n elements the first iteration, then n/2, then n/4, then n/8, and so on, which simplifies to O(n)
+#     space complexity: O(logn)
+#         worst case scenario is O(n), but again will only occur if we are very very unlucky
