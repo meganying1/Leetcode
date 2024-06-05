@@ -11,3 +11,5 @@ class Solution:
         xor = 0
         for n in nums: xor ^= n
         return xor
+# time complexity: O(n)
+# space complexity: O(1)
