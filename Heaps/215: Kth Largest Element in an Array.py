@@ -7,6 +7,7 @@
 # Note that it is the kth largest element in the sorted order, not the kth distinct element.
 # Can you solve it without sorting?
 
+# heap solution
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         heap = nums[:k]
@@ -27,3 +28,30 @@ class Solution:
         for _ in range(len(nums)-k): heapq.heappop(nums)
         return nums[0]
 """
+
+# quickselect solution
+"""
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        
+        def partition(l, r):
+            x = nums[r]
+            i = l
+            for j in range(l, r):
+                if nums[j] <= x:
+                    nums[i], nums[j] = nums[j], nums[i]
+                    i += 1
+            nums[i], nums[r] = nums[r], nums[i]
+            return i
+        
+        def helper(l, r):
+            i = partition(l, r)
+            if n-i == k: return nums[i]
+            elif n-i > k: return helper(l+1, r)
+            return helper(l, r-1)
+
+        return helper(0, n-1)
+"""
+# worst case scenario time complexity is O(n^2)
+#     to fix: choose random index instead of r as pivot
