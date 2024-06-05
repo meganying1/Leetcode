@@ -36,12 +36,25 @@ class Solution:
         def quickselect(arr, k):
             randInd = random.randint(0, len(arr)-1)
             randPivot = arr[randInd]
-            left = [num for num in arr if num <= randPivot]
-            for i, num in enumerate(left):
-                if num == randPivot:
-                    left.pop(i)
-                    break
-            right = [num for num in arr if num > randPivot]
+            left, right = [], []
+            leftCount, rightCount = 0, 0
+            for num in arr:
+                if num > randPivot: right.append(num)
+                elif num < randPivot: left.append(num)
+                else:
+                    rand = random.randint(0, 1)
+                    if rand == 1:
+                        right.append(randPivot)
+                        rightCount += 1
+                    else:
+                        left.append(randPivot)
+                        leftCount += 1
+            if rightCount == 0: left.remove(randPivot)
+            elif leftCount == 0: right.remove(randPivot)
+            else:
+                rand = random.randint(0, 1)
+                if rand == 1: left.remove(randPivot)
+                else: right.remove(randPivot)
             n = len(right)
             if n >= k: return quickselect(right, k)
             elif n+1 == k: return randPivot
