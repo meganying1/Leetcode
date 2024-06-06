@@ -14,7 +14,6 @@ class Solution:
             return x**2 + y**2
 
         heap = []
-        heapq.heapify(heap)
         for [x, y] in points[:k]: heapq.heappush(heap, (-distance(x, y), x, y))
         for [x, y] in points[k:]:
             (d, minx, miny) = heap[0]
