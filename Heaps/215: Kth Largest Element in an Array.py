@@ -37,6 +37,28 @@ class Solution:
             randInd = random.randint(0, len(arr)-1)
             randPivot = arr[randInd]
             left, right = [], []
+            pivotCount = 0
+            for num in arr:
+                if num > randPivot: right.append(num)
+                elif num < randPivot: left.append(num)
+                else: pivotCount += 1
+            n = len(right)
+            if n >= k: return quickselect(right, k)
+            elif n + pivotCount >= k: return randPivot
+            return quickselect(left, k-n-pivotCount)
+
+        return quickselect(nums, k)
+# time complexity: O(n)
+# space complexity: O(n)
+
+"""
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        
+        def quickselect(arr, k):
+            randInd = random.randint(0, len(arr)-1)
+            randPivot = arr[randInd]
+            left, right = [], []
             leftCount, rightCount = 0, 0
             for num in arr:
                 if num > randPivot: right.append(num)
@@ -61,6 +83,7 @@ class Solution:
             return quickselect(left, k-n-1)
 
         return quickselect(nums, k)
+"""
 # time complexity: O(n)
 # space complexity: O(n)
 #     first iteration uses n space for left and right array, second uses n/2 space, etc.
