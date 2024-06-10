@@ -49,4 +49,5 @@ class Solution:
         for p in points:
             p.append(distance(p[0], p[1]))
         return [[p[0], p[1]] for p in quickselect(points, k)]
-# time complexity: O(n
+# time complexity: O(n)
+# space complexity: O(n)
