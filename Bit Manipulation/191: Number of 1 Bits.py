@@ -33,3 +33,4 @@ class Solution:
 #     so the while loop takes O(32) to run one iteration in a way, but we already know that our number has say 32 bits at most
 # instead we can do: for offset in range(32): (check if the offset-th bit is set, and if so add 1 to the result)
 #     in practice doesn't matter since bit operations are very very quick
+# think of any sort of operation on an integer as O(32) time
