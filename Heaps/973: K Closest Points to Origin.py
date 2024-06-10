@@ -43,13 +43,10 @@ class Solution:
             leftLen, midLen = len(left), len(middle)
             if leftLen == k: return left
             elif leftLen > k: return quickselect(left, k)
-            elif leftLen < k and k <= leftLen + midLen:
-                left.extend(middle[:k-leftLen])
-                return left
-            left.extend(middle)
-            left.extend(quickselect(right, k-leftLen-midLen))
-            return left
+            elif leftLen < k and k <= leftLen + midLen: return left + middle[:k-leftLen]
+            return left + middle + quickselect(right, k-leftLen-midLen)
         
         for p in points:
             p.append(distance(p[0], p[1]))
         return [[p[0], p[1]] for p in quickselect(points, k)]
+# time complexity: O(n
