@@ -7,11 +7,23 @@
 
 class Solution:
     def hammingWeight(self, n: int) -> int:
+        count = 0
+        while n:
+            count += n & 1
+            n >>= 1
+        return count
+# time complexity: O(logn)
+# space complexity: O(1)
+
+"""
+class Solution:
+    def hammingWeight(self, n: int) -> int:
         ans = 0
         while n > 0:
             ans += n & 1
             n >>= 1
         return ans
+"""
 # time complexity: O(k)
 #   k is the number of bits in n
 # space complexity: O(1)
