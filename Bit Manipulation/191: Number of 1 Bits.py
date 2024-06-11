@@ -13,6 +13,11 @@ class Solution:
             n >>= 1
         return count
 # time complexity: O(logn)
+#     if we treat while loop as O(logn) time and bit operations as O(1) time (what most people would say)
+#     need to explain to interviewer
+#         could also argue that while loop is O(32) -> O(1) time and therefore entire solution is constant
+#         could also argue that if n is very large, bit operations can take O(logn) time -> overall time complexity would be O(log^2 n)
+#         could even argue the time complexity is O(log^3 n), O(logn) for the while loop, O(logn) for the creation of a number in the loop, and O(logn) for the bit operations
 # space complexity: O(1)
 
 """
@@ -24,8 +29,8 @@ class Solution:
             n >>= 1
         return ans
 """
-# time complexity: O(k)
-#   k is the number of bits in n
+# time complexity: O(logn)
+#     see time complexity from above
 # space complexity: O(1)
 
 # need to think about how while loop works: for the computer to check if a number is not 0, it has to check if any of the bits are set
