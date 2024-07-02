@@ -13,7 +13,7 @@ class Solution(object):
         ans = 0
 
         def dfs(i, j):
-            if (i < 0) or (i >= rows) or (j < 0) or (j >= cols): return
+            if (i < 0) or (i == rows) or (j < 0) or (j == cols): return
             if (grid[i][j] == "0") or ((i, j) in seen): return
             seen.add((i, j))
             for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
