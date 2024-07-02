@@ -13,7 +13,7 @@ class Solution:
             a = a ^ b
             b = carryOver
         return a & mask if b > 0 else a
-
+# python overcomplicates this problem
 # time complexity: O(1)
 # space complexity: O(1)
       
@@ -32,3 +32,13 @@ class Solution:
 # in the final check:
 #     if b == 0, that means there is no carry
 #     when there is a negative number, the carry bit will continue until it exceeds 32 bit mask, so we use a bit mask on a
+
+# C solution:
+int getSum(int a, int b) {
+    while (b != 0) {
+        unsigned carryOver = a & b;
+        a = a ^ b;
+        b = carryOver << 1;
+    }
+    return a;
+}
