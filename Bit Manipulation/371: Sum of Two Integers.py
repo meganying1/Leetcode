@@ -27,11 +27,15 @@ class Solution:
 #     eventually carry will become 0 when it exceeds 32 bits
 # we now successfully get out of the while loop, but a also only has 32 bits
 # if a is negative, we need to convert it to two's complement: flip all bits and add one
-#     we cannot use ~ operator because it will flip infinite bits, not just the last 32 bits
+#     we cannot use ~ operator because it won't flip enough bits (only flips up to the biggest set bit
 #     instead, we use ^ operator with OxFFFFFFFF because xoring bits with 1 has the same effect as flipping the bits
 # in the final check:
 #     if b == 0, that means there is no carry
 #     when there is a negative number, the carry bit will continue until it exceeds 32 bit mask, so we use a bit mask on a
+
+# may be easier to think of bit manipulation more generally:
+# you can use many different operations with bits to get the same result:
+#     for example, to check if the ith bit is set: if num & (1 << i) OR if num >> i & 1
 
 # C solution:
 int getSum(int a, int b) {
