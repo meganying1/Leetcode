@@ -22,9 +22,10 @@
 #       a weighted graph means the edges have a certain cost or weight to traverse them
 #       an unweighted graph means there is no cost
 
-# complexity is represented in terms of v (# of vertices / nodes) and e (number of edges)
+# complexity can be represented in terms of v (# of vertices / nodes) and e (number of edges)
 # matrix graphs have interesting property in which every node (except for edges) have 4 neighbors
 #   each node has at max 4 edges, for a total of 4v edges, so all complexities can be expressed as function of v
+#   usually for matrix graphs, we represent complexities in terms of n and m
 # in a normal graph of n nodes, each node can have up to n-1 edges
 #   in the worst case, a graph can have up to v^2 edges (this is known as a start graph)
 #   we represent complexity in terms of v and e since e can be a lot larger than v
