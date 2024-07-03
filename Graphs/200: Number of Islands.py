@@ -25,5 +25,6 @@ class Solution(object):
                     ans += 1
                     dfs(i, j)
         return ans
-# time complexity: O(v)
-# space complexity: O(v)
+# time complexity: O(n*m)
+# space complexity: O(n*m)
+# using a set for seen values is more efficient here because we may not need to store information about all cells in the matrix
