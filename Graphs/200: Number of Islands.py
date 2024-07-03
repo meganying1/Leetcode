@@ -28,11 +28,17 @@ class Solution(object):
 # this solution uses depth-first search
 # time complexity: O(n*m)
 # space complexity: O(n*m)
-#     if we ignore the set, we still could use up to n*m space if the grid is snake-like:
-#         1 0 1 1 1
-#         1 0 1 0 1
-#         1 0 1 0 1
-#         1 1 1 0 1
-#     for a full grid of land, the stack space is just the depth, and the grid traversal won't move in a way that uses n*m space
+
+# if we ignore the set, we still could use up to n*m space if the grid is snake-like:
+#     1 0 1 1 1
+#     1 0 1 0 1
+#     1 0 1 0 1
+#     1 1 1 0 1
+# for a full grid of land, the stack space is just the depth, and the grid traversal won't move in a way that uses n*m space
+
+# if we use breadth-first search, which uses a queue instead of a callstack, the maximum queue size is min(n, m), but we still use n*m space for the seen set
+# we can reduce final space complexity down to min(n, m) if we reuse the input matrix, storing "2" to indicate a seen cell
+#     a trick for reducing complexity, but we typically don't want to alter the input matrix
+
 # using a set for seen values is more efficient here because we may not need to store information about all cells in the matrix
 # using an array would be more efficient if all of the cells are equal to "1" since arrays are more performant than hashmaps
