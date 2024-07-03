@@ -28,3 +28,4 @@ class Solution(object):
 # time complexity: O(n*m)
 # space complexity: O(n*m)
 # using a set for seen values is more efficient here because we may not need to store information about all cells in the matrix
+# using an array would be more efficient if all of the cells are equal to "1" since arrays are more performant than hashmaps
