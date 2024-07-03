@@ -26,7 +26,8 @@ class Solution:
 
         while queue:
             ans += 1
-            for _ in range(len(queue)):
+            n = len(queue)
+            for _ in range(n):
                 r, c = queue.popleft()
                 for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
                     newR, newC = r+dx, c+dy
