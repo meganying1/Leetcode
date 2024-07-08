@@ -46,3 +46,7 @@ class Solution(object):
         pacific = bfs(pacificQueue, pacificFlow)
         atlantic = bfs(atlanticQueue, atlanticFlow)
         return pacific.intersection(atlantic)
+# time complexity: O(n*m)
+#     bfs can only visit each element and edge once
+#     we call bfs twice
+# space complexity: O(n*m)
