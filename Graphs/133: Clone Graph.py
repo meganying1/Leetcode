@@ -27,3 +27,10 @@ class Solution(object):
         
         cloneNode(node)
         return nodeMap[1]
+# time complexity: O(v+e)
+#     we visit each vertex once and each edge twice
+#     since the number of edges can be large, we say v+e
+# space complexity: O(v)
+#     we store v nodes in nodeMap
+#     the dfs callstack depth is v
+#     the space used by the nodes is e, but we don't include this in the space complexity since it's part of the solutio
