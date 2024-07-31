@@ -108,8 +108,8 @@ class Solution:
 # time complexity: O(2^n)
 #     base case is first or second fibonacci number
 #     time complexity for a single call to fib() is constant assuming we have the child values already
-#     generally speaking in recursion, time complexity of code = (number of recursive calls) * (amount of time each recursive call takes
-#         if you represent each call to the fib function as a node, there are 2^n nodes because depth of the tree is n and the branching factor is 2^n; so number of calls to the fib function is 2^n calls
+#     generally speaking in recursion, time complexity of code = (number of recursive calls) * (amount of time each recursive call takes)
+#         if you represent each call to the fib function as a node, there are 2^n nodes because depth of the tree is n and the branching factor is 2; so number of calls to the fib function is 2^n calls
 #         technically branching factor isn't exactly two because we're not doing fib(n) = fib(n-1) + fib(n-1), true complexity is (golden ratio)^n
 # space complexity: O(n)
 #     recursive callstack uses space, and each of those callstacks takes constant space, because there's a constant amount of variables inside a single call to fib()
