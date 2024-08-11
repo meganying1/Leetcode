@@ -4,17 +4,13 @@
 
 # Given an integer array nums, find the subarray with the largest sum, and return its sum.
 
-class Solution:
+class Solution(object):
     def maxSubArray(self, nums: List[int]) -> int:
-        start = end = 0
-        ans, windowSum = -float("inf"), 0
-        while end < len(nums):
-            windowSum += nums[end]
+        ans, windowSum = nums[0], 0
+        for n in nums:
+            windowSum += n
+            if windowSum < 0: windowSum = 0   
             ans = max(ans, windowSum)
-            if windowSum < 0:
-                start = end + 1
-                windowSum = 0
-            end += 1
         return ans
 
 """
