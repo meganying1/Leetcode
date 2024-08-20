@@ -22,3 +22,12 @@ class Solution(object):
             return ans
 
         return dp(1, 1) + 1
+# base cases:
+#     if we successfully reach a length of n A's, return 0
+#     if we have length greater than n A's, return infinity to ignore this sequence
+# subproblems:
+#     try copying all and then pasting, which takes two operations: currLen doubles and pasteLen becomes currLen
+#     try pasting, which takes one operation: add pasteLen to currLen and pasteLen stays the same
+        
+# time complexity: O(n^2)
+# space complexity: O(n^2)
