@@ -14,8 +14,9 @@ class Solution:
         dp = [0] * (high + 1)
         dp[0] = 1
         for i in range(high+1):
-            dp[i] += (dp[i-zero] + dp[i-one]) % (10**9 + 7)
-        return sum(dp[low:high+1]) % (10**9 + 7)
+            if i >= zero: dp[i] = dp[i-zero]
+            if i >= one: dp[i] = (dp[i] + dp[i-one]) % (10**9 + 7)
+        return sum(dp[low:]) % (10**9 + 7)
 # bottom-up dynammic programming
 # time complexity: O(high)
 # space complexity: O(high)
