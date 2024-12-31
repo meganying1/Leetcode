@@ -14,6 +14,36 @@
 
 class Solution:
     def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        dp = [0] * (days[-1] + 1)
+        daysSet = set(days)
+        for day in range(1, days[-1]+1):
+            if day not in daysSet: dp[day] = dp[day-1]
+            else: dp[day] = min(dp[day-1]+costs[0], dp[max(0, day-7)]+costs[1], dp[max(0, day-30)]+costs[2])
+        return dp[-1]
+# bottom-up dynamic programming solution
+# time complexity: O(k), where k is last day we need to travel
+# space complexity: O(k)
+
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        cache = [None] * (days[-1] + 1)
+        daysSet = set(days)
+        
+        def dp(day):
+            if day > days[-1]: return 0
+            if cache[day] != None: return cache[day]
+            if day not in daysSet: ans = dp(day+1)
+            else: ans = min(dp(day+1)+costs[0], dp(day+7)+costs[1], dp(day+30)+costs[2])
+            cache[day] = ans
+            return ans
+        
+        return dp(1)
+# top-down dynamic programming solution #2
+# time complexity: O(k), where k is last day we need to travel
+# space complexity: O(k)
+
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
         n = len(days)
         cache = [None] * (n)
         
@@ -28,6 +58,6 @@ class Solution:
             return ans
         
         return dp(0)
-# top-down dynamic programming
-# time complexity: O(nlogn)
+# top-down dynamic programming solution #1
+# time complexity: O(nlogn), where n is length of days
 # space complexity: O(n)
