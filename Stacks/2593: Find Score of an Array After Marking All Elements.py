@@ -11,6 +11,28 @@
 #   Repeat until all the array elements are marked.
 # Return the score you get after applying the above algorithm.
 
+# stack solution:
+class Solution:
+    def findScore(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = i = 0
+        stack = []
+        for i in range(n):
+            if not stack or nums[i] < stack[-1]:
+                stack.append(nums[i])
+                continue
+            while stack:
+                ans += stack.pop()
+                if stack: stack.pop()
+        while stack:
+            ans += stack.pop()
+            if stack: stack.pop()
+        return ans
+# time complexity: O(n)
+# space complexity: O(n)
+# idea: if number is less than its neighbors, we wil choose it and add it to our score, so we maintain a monotonically decreasing stack
+# we can optimize space by getting rid of stack and using a poiner
+
 # sorting solution
 class Solution:
     def findScore(self, nums: List[int]) -> int:
