@@ -5,6 +5,20 @@
 # problem:
 # Given an integer array nums, return the length of the longest strictly increasing subsequence.
 
+# greedy + binary search approach
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        LIS = [nums[0]]
+        for i in range(1, len(nums)):
+            if nums[i] > LIS[-1]: LIS.append(nums[i])
+            else:
+                j = bisect.bisect_left(LIS, nums[i])
+                LIS[j] = nums[i]
+        return len(LIS)
+# time complexity: O(nlogn)
+# space complexity: O(n)
+
+# dynamic programming approach
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         length = len(nums)
