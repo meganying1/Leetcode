@@ -15,7 +15,7 @@ class Solution:
         for i in range(n):
             minVal = nums[i]
             maxVal = target - minVal
-            if maxVal < minVal: continue
+            if maxVal < minVal: break
             j = bisect_right(nums, target-minVal)
             if j == n or nums[j] > maxVal: j -= 1
             ans += (2 ** (j-i)) % modulo
