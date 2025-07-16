@@ -7,17 +7,20 @@
 
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        total, n = sum(nums), len(nums)
+        total = sum(nums)
         if total % 2 == 1: return False
         target = total // 2
         dp = [False] * (target + 1)
         dp[0] = True
         for n in nums:
             for possSum in range(target, n-1, -1):
-                dp[possSum] = dp[possSum] or dp[possSum - n]
-        return dp[-1]
+                dp[possSum] |= dp[possSum - n]
+                if dp[target]: return True
+        return dp[target]
 # time complexity: O(n * k), where k = sum(nums) / 2
 # space complexity: O(k)
+
+# we iterate backwards from target to n to ensure that we don't reuse any numbers in our sum
 
 """
 class Solution:
