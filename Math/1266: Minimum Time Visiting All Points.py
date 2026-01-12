@@ -21,3 +21,5 @@ class Solution:
             if dx > dy: ans += dx
             else: ans += dy
         return ans
+# time complexity: O(n)
+# space complexity: O(1)
